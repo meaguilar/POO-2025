@@ -1,34 +1,40 @@
 package com.abc.proyectoejemplojavafxmvc;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class PersonaControlador {
     @FXML
-    private TextField nombreField;
+    private TextField nombreTextField;
 
     @FXML
-    private TextField generoField;
+    private ComboBox generoComboBox;
+    ObservableList<String> generos = FXCollections.observableArrayList("Femenino", "Masculino");
 
     @FXML
-    private TextField aNacField;
+    private DatePicker aNacDatePicker;
 
     @FXML
-    private Label datosLabel;
+    private Label resultadosLabel;
 
     private Persona persona;
 
     @FXML
     public void initialize() {
         persona = new Persona();
+        generoComboBox.setItems(generos);
     }
 
-    @FXML
     /**
      * Metodo para guardar datos en objeto
      */
+    @FXML
     private void guardarDatos() {
-        persona.setNombre(nombreField.getText());
+        persona.setNombre(nombreTextField.getText());
+        persona.setGenero(generoComboBox.getSelectionModel().getSelectedItem().toString());
+        persona.setANac(aNacDatePicker.getValue().getYear());
 
     }
     /**
@@ -36,6 +42,7 @@ public class PersonaControlador {
      */
     @FXML
     private void mostrarDatos() {
-        datosLabel.setText(persona.getNombre());
+
+        resultadosLabel.setText(persona.getNombre() + " " + persona.getGenero() + " " + persona.calcularEdad());
     }
 }
