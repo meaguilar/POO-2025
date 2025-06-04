@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.abc.proyectoejemplojavafxmvc.controladores.VistaControlador">
+   <children>
+      <Button layoutX="212.0" layoutY="171.0" onAction="#cambiarVista" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #1c1c1c;" text="Bienvenido" textFill="WHITE" />
+   </children>
+</AnchorPane>

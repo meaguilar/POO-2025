@@ -1,4 +1,4 @@
-package com.abc.proyectoejemplojavafxmvc;
+package com.abc.proyectoejemplojavafxmvc.modelos;
 
 public interface IPersona {
 

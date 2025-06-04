@@ -6,34 +6,48 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.abc.proyectoejemplojavafxmvc.PersonaControlador">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.abc.proyectoejemplojavafxmvc.controladores.PersonaControlador">
    <children>
-      <Label layoutX="145.0" layoutY="62.0" text="Nombre completo">
+      <VBox fx:id="formVBox" layoutX="106.0" layoutY="41.0" prefHeight="152.0" prefWidth="388.0" style="-fx-spacing: 15;">
+         <children>
+            <Label text="Nombre completo">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nombreTextField" prefHeight="17.0" prefWidth="313.0" />
+            <Label text="Género">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="generoComboBox" prefHeight="25.0" prefWidth="389.0" />
+            <Label text="Fecha de nacimiento">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="fNacPicker" prefHeight="25.0" prefWidth="390.0" />
+         </children>
+      </VBox>
+
+      <Label fx:id="datosLabel" layoutX="149.0" layoutY="266.0" prefHeight="21.0" prefWidth="304.0">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="nombreTextField" layoutX="145.0" layoutY="83.0" prefHeight="17.0" prefWidth="313.0" />
-      <Label layoutX="145.0" layoutY="125.0" text="Género">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <ComboBox fx:id="generoComboBox" layoutX="145.0" layoutY="146.0" prefHeight="25.0" prefWidth="313.0" />
-      <Label layoutX="143.0" layoutY="190.0" text="Fecha de nacimiento">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <DatePicker fx:id="aNacDatePicker" layoutX="145.0" layoutY="212.0" prefHeight="25.0" prefWidth="313.0" />
-      <Button layoutX="167.0" layoutY="334.0" mnemonicParsing="false" onAction="#guardarDatos" text="Guardar datos" />
-      <Button layoutX="341.0" layoutY="334.0" mnemonicParsing="false" onAction="#mostrarDatos" text="Mostrar datos" />
-      <Label fx:id="resultadosLabel" layoutX="150.0" layoutY="283.0" prefHeight="21.0" prefWidth="304.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
+      <HBox fx:id="accionesHBox" layoutX="125.0" layoutY="312.0" prefHeight="54.0" prefWidth="351.0" style="-fx-spacing: 5;">
+         <children>
+            <Button fx:id="guardarButton" onAction="#guardar" prefHeight="54.0" prefWidth="122.0" style="-fx-background-color: #1c1c1c;" text="Guardar " textFill="WHITE" />
+            <Button fx:id="mostrarButton" onAction="#mostrar" prefHeight="54.0" prefWidth="117.0" style="-fx-background-color: #1c1c1c; -fx-font: #fffff;" text="Mostrar" textFill="WHITE" />
+            <Button fx:id="buscarButton" onAction="#buscar" prefHeight="54.0" prefWidth="117.0" style="-fx-background-color: #1c1c1c; -fx-font: #fffff;" text="Buscar" textFill="WHITE" />
+            <Button fx:id="eliminarButton" onAction="#eliminar" prefHeight="54.0" prefWidth="117.0" style="-fx-background-color: #1c1c1c;" text="Eliminar" textFill="WHITE" />
+            <Button fx:id="actButton" onAction="#actualizar" prefHeight="76.0" prefWidth="128.0" style="-fx-background-color: #1c1c1c;" text="Actualizar" textFill="WHITE" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

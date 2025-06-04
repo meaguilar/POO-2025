@@ -1,17 +1,29 @@
-package com.abc.proyectoejemplojavafxmvc;
+package com.abc.proyectoejemplojavafxmvc.modelos;
 
 import java.time.LocalDate;
 
 public class Persona implements IPersona {
 
+    //cambio: se agrego el id
+    private int id;
     private String nombre;
     private int aNac;
     private String genero;
 
     public Persona() {}
-    public Persona(String nombre, int aNac, String genero) {
+    //se agrego el id
+    public Persona(int id, String nombre, int aNac, String genero) {
+        this.id = id;
         this.nombre = nombre;
         this.aNac = aNac;
+        this.genero = genero;
+    }
+    // Cambio: setter/getter id
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId() {
+        return id;
     }
     public String getNombre() {
         return nombre;
@@ -31,6 +43,10 @@ public class Persona implements IPersona {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+    public int getEdad(){
+        return calcularEdad();
+    }
+
 
     /**
      * Este metodo calcula la edad
@@ -41,9 +57,13 @@ public class Persona implements IPersona {
      *
      * </p>
      */
-
     public int calcularEdad(){
         return LocalDate.now().getYear() - getANac();
+    }
+
+    @Override
+    public String toString(){
+        return "Id: " + id + ", Nombre:" + nombre + ", Género: " + genero + ", Año de nacimiento: "+ aNac + ", Edad: " + calcularEdad() + " años";
     }
 
 }
