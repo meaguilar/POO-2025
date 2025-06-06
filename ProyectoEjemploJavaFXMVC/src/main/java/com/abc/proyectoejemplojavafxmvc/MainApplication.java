@@ -1,5 +1,6 @@
 package com.abc.proyectoejemplojavafxmvc;
 
+import com.abc.proyectoejemplojavafxmvc.modelos.ConexionDB;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,7 +25,9 @@ public class MainApplication extends Application {
         stage.getIcons().add(logo);
         stage.setTitle("Gestión de Personas");
         stage.setScene(scene);
-        stage.show();
+        //stage.show();
+        //Metodo para probar la conexión
+        ConexionDB.testConexion();
     }
 
     public static void main(String[] args) {
