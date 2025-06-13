@@ -25,9 +25,9 @@ public class MainApplication extends Application {
         stage.getIcons().add(logo);
         stage.setTitle("Gestión de Personas");
         stage.setScene(scene);
-        //stage.show();
+        stage.show();
         //Metodo para probar la conexión
-        ConexionDB.testConexion();
+        //ConexionDB.testConexion();
     }
 
     public static void main(String[] args) {
