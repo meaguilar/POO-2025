@@ -11,7 +11,8 @@ public class PersonaDAO {
     public void insertar(Persona persona) {
         String sql = "INSERT INTO Persona (nombre, aNac, genero) VALUES (?, ?, ?)";
 
-        try (Connection conn = ConexionDB.getConexion();
+        // cambio
+        try (Connection conn = ConexionDB.getInstancia().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, persona.getNombre());
@@ -24,9 +25,10 @@ public class PersonaDAO {
             e.printStackTrace();
         }
     }
+
     public void actualizar(Persona persona, int id) {
         String sql = "UPDATE PERSONA SET nombre = ?, aNac = ?, genero = ? WHERE id = ?";
-        try (Connection conn = ConexionDB.getConexion();
+        try (Connection conn = ConexionDB.getInstancia().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, persona.getNombre());
@@ -45,7 +47,7 @@ public class PersonaDAO {
 
     public void eliminar(int id) {
         String sql = "DELETE FROM Persona WHERE id = ?";
-        try (Connection conn = ConexionDB.getConexion();
+        try (Connection conn = ConexionDB.getInstancia().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
@@ -60,7 +62,7 @@ public class PersonaDAO {
 
     public Persona buscarPersonaPorId(int id) {
         String sql = "SELECT * FROM Persona WHERE id = ?";
-        try (Connection conn = ConexionDB.getConexion();
+        try (Connection conn = ConexionDB.getInstancia().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
@@ -83,7 +85,7 @@ public class PersonaDAO {
     public List<Persona> listarPersonas() {
         List<Persona> personas = new ArrayList<>();
         String sql = "SELECT * FROM Persona";
-        try (Connection conn = ConexionDB.getConexion();
+        try (Connection conn = ConexionDB.getInstancia().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 

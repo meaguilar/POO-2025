@@ -8,18 +8,46 @@ public class ConexionDB {
     private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=POO;encrypt=true;trustServerCertificate=true";
     private static final String USER = "sa";
     private static final String PASSWORD = "123456";
-    private static Connection connection;
 
-    public static Connection getConexion() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection(URL,USER, PASSWORD);
+
+    // Instancia única de la conexión (Singleton)
+    private static Connection connection;
+    private static ConexionDB instancia;
+
+    // Constructor privado para evitar instanciación directa
+    private ConexionDB() {
+        try {
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Metodo para obtener la instancia única de la clase
+    public static ConexionDB getInstancia() {
+        if (instancia == null) {
+            instancia = new ConexionDB();
+        }
+        return instancia;
+    }
+
+
+    // Metodo para obtener la conexión activa
+    public Connection getConnection() {
+        try {
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return connection;
     }
 
     // Metodo para probar la conexión
     public static void testConexion() {
-        try (Connection conn = getConexion()) {
+        Connection conn = ConexionDB.getInstancia().getConnection();
+        try {
             if (conn != null && !conn.isClosed()) {
                 System.out.println("¡Conexión exitosa a SQL Server!");
             } else {
@@ -30,8 +58,5 @@ public class ConexionDB {
             e.printStackTrace();
         }
     }
-
-
-
 
 }
